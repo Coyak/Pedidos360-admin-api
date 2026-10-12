@@ -39,6 +39,16 @@ public class QueueCreateRequestDTO {
         this.nombre = nombre;
     }
 
+    public String getName() {
+        return nombre;
+    }
+
+    public void setName(String name) {
+        if (this.nombre == null || this.nombre.isEmpty()) {
+            this.nombre = name;
+        }
+    }
+
     public Boolean getDurable() {
         return durable;
     }

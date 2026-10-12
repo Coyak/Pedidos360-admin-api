@@ -43,6 +43,26 @@ public class RabbitAdminController {
     // ==========================================
 
     /**
+     * Lista las colas principales del ecosistema y sus estadísticas.
+     * GET /api/admin/queues
+     */
+    @GetMapping("/queues")
+    public ResponseEntity<java.util.List<QueueInfoResponseDTO>> listarColas() {
+        java.util.List<String> colas = java.util.List.of(
+            "pedidos.stock.queue",
+            "pedidos.stock.dlq",
+            "pedidos.notificaciones.queue",
+            "pedidos.notificaciones.dlq",
+            "pedidos.auditoria.queue",
+            "pedidos.auditoria.dlq"
+        );
+        java.util.List<QueueInfoResponseDTO> resultado = colas.stream()
+                .map(adminService::obtenerInfoCola)
+                .toList();
+        return ResponseEntity.ok(resultado);
+    }
+
+    /**
      * Crea o declara una nueva cola en RabbitMQ con soporte opcional para DLX.
      * POST /api/admin/queues
      */
