@@ -15,7 +15,7 @@ import java.util.Map;
  * Cumple con estándares de diseño REST, verbos HTTP semánticos y validación de entrada mediante DTOs.
  */
 @RestController
-@CrossOrigin(origins = "*", allowedHeaders = "*")
+@CrossOrigin(originPatterns = "*", allowedHeaders = "*")
 @RequestMapping("/api/admin")
 public class RabbitAdminController {
 
